@@ -1,0 +1,33 @@
+{
+  "name": "rowe/yii2-region-module",
+  "type": "yii2-extension",
+  "description": "Yii2 file/image upload behavior for ActiveRecord",
+  "keywords": [
+    "region",
+    "droplist",
+    "upload",
+    "behavior",
+    "resize",
+    "thumb"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Rowe/yii2-region-module",
+  "authors": [
+    {
+      "name": "Vinnie Rowe",
+      "email": "vinnie.rowe@gmail.com",
+      "homepage": "http://rowe.top",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "*",
+  },
+  "autoload": {
+    "psr-4": {
+      "rowe\\region\\": ""
+    }
+  }
+}
