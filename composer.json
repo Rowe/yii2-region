@@ -1,33 +1,23 @@
 {
-  "name": "rowe/yii2-region-module",
-  "type": "yii2-extension",
-  "description": "Yii2 file/image upload behavior for ActiveRecord",
-  "keywords": [
-    "region",
-    "droplist",
-    "upload",
-    "behavior",
-    "resize",
-    "thumb"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/Rowe/yii2-region-module",
-  "authors": [
-    {
-      "name": "Vinnie Rowe",
-      "email": "vinnie.rowe@gmail.com",
-      "homepage": "http://rowe.top",
-      "role": "Developer"
+    "name": "rowe/yii2-region-selector",
+    "description": "Yii2中国省市区三级联动",
+    "keywords": [
+        "yii2","region","province","city","district"
+    ],
+    "type": "yii2-widget",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Rowe",
+            "email": "vinnie.rowe@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "rowe\\region-selector\\": ""
+        }
     }
-  ],
-  "minimum-stability": "dev",
-  "require": {
-    "php": ">=5.4.0",
-    "yiisoft/yii2": "*"
-  },
-  "autoload": {
-    "psr-4": {
-      "rowe\\region\\": ""
-    }
-  }
 }
