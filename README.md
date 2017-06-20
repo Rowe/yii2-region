@@ -1,15 +1,15 @@
-# yii2-region
-Yii2 中国省市区三级联动(https://github.com/chenkby/yii2-region)
+# yii2-region-selector
+Yii2 extension for Chinese region list box(https://github.com/rowe/yii2-region-selector)
 
-## 安装
+## Installation
 
-添加到你的composer.json文件
+add to composer.json file with:
 
 ```
-"chenkby/yii2-region": "dev-master"
+"rowe/yii2-region-selector": "dev-master"
 ```
 
-## 配置
+## Configuration
 
 1、在地区的Model中添加以下方法
 ```php
