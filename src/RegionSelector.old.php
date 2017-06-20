@@ -6,7 +6,7 @@ use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
-class Region extends Widget
+class RegionSelector extends Widget
 {
     public $model = null;
 
@@ -35,6 +35,10 @@ class Region extends Widget
      */
     public $url;
 
+
+    public function registerAssets(){
+        $view = $this->getView();
+    }
     public function init()
     {
         if (!$this->model) {
