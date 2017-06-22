@@ -48,14 +48,9 @@ class RegionBehavior extends Behavior
         return $this->owner->hasOne($modelClass::className(),['id'=>$this->districtAttribute]);
     }
 
-    /**
-     * 返回完整的地区名称
-     * @example 广东深圳市宝安区
-     * @param bool $useDistrict 是否要返回县/区
-     * @return string
-     */
-    public function getFullRegion($useDistrict=false)
+
+    public function getFullRegion($separator = "/")
     {
-        return $this->owner->province['name'].$this->owner->city['name'].($useDistrict ? $this->owner->district['name'] : '');
+        return $this->owner->province['name'].$separator.$this->owner->city['name'].$separator. $this->owner->district['name'];
     }
 }
