@@ -6,7 +6,9 @@ use yii\base\Widget;
 
 class RegionSelector extends Widget
 {
-
+    public $model;
+    public $name = "full_region_name";
+    public $value;
 
     public function registerAssets(){
         $view = $this->getView();
@@ -15,6 +17,7 @@ class RegionSelector extends Widget
     }
     public function init()
     {
+
         $this->registerAssets();
 
     }
@@ -31,7 +34,7 @@ class RegionSelector extends Widget
 //        }
 //        return @implode("\n", $output);
 
-        return "<input type=\"text\" name=\"\" id=\"btn1\" class=\"area_input\">";
+        return "<input type=\"text\" name=\"full_region\" id=\"btn1\" class=\"area_input\" value='ddd'>";
     }
 
 }
