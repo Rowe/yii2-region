@@ -1,4 +1,4 @@
-jQuery.fn.areaSelector = function(argument) {
+jQuery.fn.areaSelector = function(options, argument) {
     var areaData; //默认地区信息
     var thisId = $(this).attr("id");
     var contentId = thisId + 'AreaContent';
@@ -7,6 +7,9 @@ jQuery.fn.areaSelector = function(argument) {
     var cityCode;
     var theRegion;
     var theCity;
+    var provinceInputId = options.provinceId || "provinceId";
+    var cityInputId = options.cityId || "cityId";
+    var districtInputId = options.districtId || "districtId";
      if (argument) {
        areaData = argument;
     } else {
@@ -128,6 +131,7 @@ jQuery.fn.areaSelector = function(argument) {
 
         $('#' + contentId + ' .data_province li').on('click', function() {
             regionCode = $(this).find('input').val();
+
             createRegion(regionCode);
             $('#' + contentId + ' .area_menu ul li:nth-child(2)').click();
             theRegion = $(this).children('a').text();

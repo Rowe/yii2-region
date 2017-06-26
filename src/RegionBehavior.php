@@ -7,6 +7,10 @@ use yii\base\InvalidConfigException;
 
 class RegionBehavior extends Behavior
 {
+
+    const PROVINCE_LEVEL = 1;
+    const CITY_LEVEL = 2;
+    const DISTRICT_LEVEL = 3;
     /**
      * @var string 省份字段名
      */
@@ -35,24 +39,28 @@ class RegionBehavior extends Behavior
     public function getProvince()
     {
         $modelClass = $this->modelClass;
-        return $this->owner->hasOne($modelClass::className(), ['code' => $this->provinceAttribute, 'level' => 1]);
+        return $modelClass::findOne(['code' => $this->owner->{$this->provinceAttribute}, 'level' => static::PROVINCE_LEVEL]);
     }
 
     public function getCity()
     {
         $modelClass = $this->modelClass;
-        return $this->owner->hasOne($modelClass::className(), ['code' => $this->cityAttribute, 'level' => 2]);
+        return $modelClass::findOne(['code' => $this->owner->{$this->cityAttribute}, 'level' => static::CITY_LEVEL]);
     }
 
     public function getDistrict()
     {
         $modelClass = $this->modelClass;
-        return $this->owner->hasOne($modelClass::className(), ['code' => $this->districtAttribute, 'level' => 3]);
+        return $modelClass::findOne(['code' => $this->owner->{$this->districtAttribute}, 'level' => static::DISTRICT_LEVEL]);
     }
 
 
     public function getFullRegion($separator = "/")
     {
-        return $this->owner->province['name'] . $separator . $this->owner->city['name'] . $separator . $this->owner->district['name'];
+        $provinceName = $this->owner->province['name'];
+        $cityName = empty($this->owner->city['name'])?"":$separator.$this->owner->city['name'];
+        $districtName = empty($this->owner->district['name'])?"":$separator.$this->owner->district['name'];
+
+        return $provinceName.$cityName.$districtName;
     }
 }
