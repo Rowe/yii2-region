@@ -4,7 +4,7 @@ namespace rowe\region;
 
 use yii\web\AssetBundle;
 
-class RegionSelectorAsset extends AssetBundle
+class RegionWidgetAsset extends AssetBundle
 {
 
     public $sourcePath = '@vendor/rowe/yii2-region-selector/src/assets';

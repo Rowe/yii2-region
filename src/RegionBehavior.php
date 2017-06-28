@@ -3,14 +3,12 @@
 namespace rowe\region;
 
 use yii\base\Behavior;
-use yii\base\InvalidConfigException;
+use rowe\region\RegionModel;
+
 
 class RegionBehavior extends Behavior
 {
 
-    const PROVINCE_LEVEL = 1;
-    const CITY_LEVEL = 2;
-    const DISTRICT_LEVEL = 3;
     /**
      * @var string 省份字段名
      */
@@ -26,41 +24,39 @@ class RegionBehavior extends Behavior
      */
     public $districtAttribute = 'district_cd';
 
-    /**
-     * @var null|\yii\db\ActiveRecord Region Model
-     */
-    public $modelClass = null;
 
     public function init()
     {
-        if (!$this->modelClass) throw new InvalidConfigException('modelClass不能为空！');
+        parent::init();
     }
+
+
+//    public function beforeValidate(){
+//        $validator = Validator::createValidator('safe',$this->owner,['province_cd','city_cd','district_cd']);
+//        $this->owner->getValidators()->append($validator);
+//    }
 
     public function getProvince()
     {
-        $modelClass = $this->modelClass;
-        return $modelClass::findOne(['code' => $this->owner->{$this->provinceAttribute}, 'level' => static::PROVINCE_LEVEL]);
+        return RegionModel::findOne(['code' => $this->owner->{$this->provinceAttribute}, 'level' => RegionModel::PROVINCE_LEVEL]);
     }
 
     public function getCity()
     {
-        $modelClass = $this->modelClass;
-        return $modelClass::findOne(['code' => $this->owner->{$this->cityAttribute}, 'level' => static::CITY_LEVEL]);
+        return RegionModel::findOne(['code' => $this->owner->{$this->cityAttribute}, 'level' => RegionModel::CITY_LEVEL, 'parent_id' => $this->owner->province['id']]);
     }
 
     public function getDistrict()
     {
-        $modelClass = $this->modelClass;
-        return $modelClass::findOne(['code' => $this->owner->{$this->districtAttribute}, 'level' => static::DISTRICT_LEVEL]);
+        return RegionModel::findOne(['code' => $this->owner->{$this->districtAttribute}, 'level' => RegionModel::DISTRICT_LEVEL, 'parent_id' => $this->owner->city['id']]);
     }
-
 
     public function getFullRegion($separator = "/")
     {
         $provinceName = $this->owner->province['name'];
-        $cityName = empty($this->owner->city['name'])?"":$separator.$this->owner->city['name'];
-        $districtName = empty($this->owner->district['name'])?"":$separator.$this->owner->district['name'];
+        $cityName = empty($this->owner->city['name']) ? "" : $separator . $this->owner->city['name'];
+        $districtName = empty($this->owner->district['name']) ? "" : $separator . $this->owner->district['name'];
 
-        return $provinceName.$cityName.$districtName;
+        return $provinceName . $cityName . $districtName;
     }
 }

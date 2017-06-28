@@ -7,9 +7,9 @@ jQuery.fn.areaSelector = function(options, argument) {
     var cityCode;
     var theRegion;
     var theCity;
-    var provinceInputId = options.provinceId || "provinceId";
-    var cityInputId = options.cityId || "cityId";
-    var districtInputId = options.districtId || "districtId";
+    var provinceName = options.provinceName || "province_cd";
+    var cityName = options.cityName || "city_cd";
+    var districtName = options.districtName || "district_cd";
      if (argument) {
        areaData = argument;
     } else {
@@ -133,6 +133,7 @@ jQuery.fn.areaSelector = function(options, argument) {
             regionCode = $(this).find('input').val();
 
             createRegion(regionCode);
+            $("input[id$='dealer-province_cd']").val(regionCode);
             $('#' + contentId + ' .area_menu ul li:nth-child(2)').click();
             theRegion = $(this).children('a').text();
             $('#' + thisId).val(theRegion);
