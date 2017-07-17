@@ -133,7 +133,7 @@ jQuery.fn.areaSelector = function(options, argument) {
             regionCode = $(this).find('input').val();
 
             createRegion(regionCode);
-            $("input[id$='dealer-province_cd']").val(regionCode);
+            $("input[id$='"+provinceName+"']").val(regionCode);
             $('#' + contentId + ' .area_menu ul li:nth-child(2)').click();
             theRegion = $(this).children('a').text();
             $('#' + thisId).val(theRegion);
@@ -142,6 +142,8 @@ jQuery.fn.areaSelector = function(options, argument) {
         $('#' + contentId + ' .data_region li').on('click', function() {
             cityCode = $(this).find('input').val();
             createCity(cityCode);
+            $("input[id$='"+cityName+"']").val(cityCode);
+
             $('#' + contentId + ' .area_menu ul li:nth-child(3)').click();
             theCity = $(this).children('a').text();
             $('#' + thisId).val(theRegion + ' / ' + theCity);
@@ -149,6 +151,8 @@ jQuery.fn.areaSelector = function(options, argument) {
 
         $('#' + contentId + ' .data_city li').on('click', function() {
             $("#" + contentId).toggleClass('isBlock');
+            $("input[id$='"+districtName+"']").val($(this).find('input').val());
+
             $('#' + thisId).val(theRegion + ' / ' + theCity + ' / ' + $(this).children('a').text());
         })
     }

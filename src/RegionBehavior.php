@@ -31,11 +31,6 @@ class RegionBehavior extends Behavior
     }
 
 
-//    public function beforeValidate(){
-//        $validator = Validator::createValidator('safe',$this->owner,['province_cd','city_cd','district_cd']);
-//        $this->owner->getValidators()->append($validator);
-//    }
-
     public function getProvince()
     {
         return RegionModel::findOne(['code' => $this->owner->{$this->provinceAttribute}, 'level' => RegionModel::PROVINCE_LEVEL]);

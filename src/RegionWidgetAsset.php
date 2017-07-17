@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 class RegionWidgetAsset extends AssetBundle
 {
 
-    public $sourcePath = '@vendor/rowe/yii2-region-selector/src/assets';
+    public $sourcePath = '@vendor/rowe/yii2-region/src/assets';
 
     public $baseUrl = '';
 

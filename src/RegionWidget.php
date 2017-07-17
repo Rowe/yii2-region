@@ -41,5 +41,4 @@ class RegionWidget extends Widget
 
         return @implode("\n", $output);
     }
-
 }
