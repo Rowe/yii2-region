@@ -1,10 +1,11 @@
 # yii2-region
 Yii2 extension for Chinese region list box(https://github.com/rowe/yii2-region-selector)
 
+## Demo
+![image](https://raw.githubusercontent.com/Rowe/yii2-region/master/yii2_region_demo.png)
+
 ## Installation
-
-add to composer.json file with:
-
+Add to composer.json file with:
 ```
 "rowe/yii2-region": "dev-master"
 ```
@@ -34,7 +35,4 @@ And then, use the widget in the view.
 ```php
 <?= RegionWidget::widget(['model' => $model]);?>
 ```
-
-## demo
-
 

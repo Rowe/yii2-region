@@ -23,6 +23,8 @@ class RegionWidget extends Widget
         if (!$this->model) {
             throw new InvalidParamException('the model can not be null!');
         }
+
+        $this->value = $this->model->{$this->name};
         RegionWidgetAsset::register($this->getView());
     }
 
