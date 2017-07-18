@@ -4,7 +4,7 @@
     "keywords": [
         "yii2","region","province","city","district"
     ],
-    "type": "yii2-widget",
+    "type": "yii2-extension",
     "license": "BSD-3-Clause",
     "authors": [
         {
